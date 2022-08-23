@@ -3,11 +3,21 @@
   <div class="flex flex-col items-center">
     <h4>{{ item.name }}</h4>
     <p>{{ item.price }}zł</p>
-    <p>{{ item.stars }}*</p>
-    <div>
-      <button (click)="onMinus()">-</button>
-      <p>{{ item.inStock }}</p>
-      <button (click)="onPlus()">+</button>
+    <p>{{ item.stars }} gwiazdki</p>
+    <div class="flex">
+      <button
+        class="bg-white text-black px-2 rounded"
+        (click)="onMinus(item.id)"
+      >
+        -
+      </button>
+      <p class="mx-2">{{ item.inStock }}</p>
+      <button
+        class="bg-white text-black px-2 rounded"
+        (click)="onPlus(item.id)"
+      >
+        +
+      </button>
     </div>
   </div>
 </div>

@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Product, ProductCategory } from 'src/app/utilities/Product';
-import * as stockActions from 'src/app/states/stock/stock.actions';
-import * as stockSelectors from 'src/app/states/stock/stock.selectors';
+import { ProductCategory } from 'src/app/utilities/Product';
+import * as productActions from 'src/app/states/product/product.actions';
+import * as productSelectors from 'src/app/states/product/product.selectors';
 import { ProductsService } from 'src/app/services/products.service';
+import { productAppState } from 'src/app/states/AppState';
 
 @Component({
   selector: 'app-shop',
@@ -13,18 +14,17 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent {
-  product$!: Observable<Product[]>;
+  products$ = this.store.select(productSelectors.selectAllProducts);
   categories = ProductCategory;
   filters: string[] = [];
 
   constructor(
-    private store: Store<{ product: Product[] }>,
+    private store: Store<productAppState>,
     private service: ProductsService
   ) {
     this.service.getProducts().subscribe((products) => {
-      this.store.dispatch(stockActions.retrievedProductsList({ products }));
+      this.store.dispatch(productActions.retrievedProductsList({ products }));
     });
-    this.product$ = this.store.select('product');
   }
 
   showProduct(key: string) {
@@ -36,10 +36,10 @@ export class ShopComponent {
       this.filters.push(key);
     }
 
-    this.filters.length == 0
-      ? (this.product$ = this.store.select('product'))
-      : (this.product$ = this.store.select(
-          stockSelectors.selectProductByCategories(this.filters)
+    this.filters.length === 0
+      ? (this.products$ = this.store.select(productSelectors.selectAllProducts))
+      : (this.products$ = this.store.select(
+          productSelectors.selectProductByCategories(this.filters)
         ));
   }
 }

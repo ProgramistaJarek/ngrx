@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { StoreModule } from '@ngrx/store';
-import { stockReducer } from './states/stock/stock.reducer';
+import { productReducer } from './states/product/product.reducer';
+import { cartReducer } from './states/cart/cart.reducer';
 
 import { ShopComponent } from './features/shop/shop.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
@@ -23,7 +24,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ product: stockReducer }, {}),
+    StoreModule.forRoot({ product: productReducer, cart: cartReducer }, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
