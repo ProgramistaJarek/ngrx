@@ -10,13 +10,24 @@ import { stockReducer } from './states/stock/stock.reducer';
 import { ShopComponent } from './features/shop/shop.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { CartComponent } from './features/cart/cart.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent, ShopComponent, ProductCardComponent, CartComponent],
+  declarations: [
+    AppComponent,
+    ShopComponent,
+    ProductCardComponent,
+    CartComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({ product: stockReducer }, {}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

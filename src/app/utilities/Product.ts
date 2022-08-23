@@ -9,7 +9,7 @@ export interface Product {
 }
 
 export enum ProductCategory {
-  SNAILS = 0,
-  BAGUETTES = 1,
-  FROGS = 2,
+  SNAILS = 'SNAILS',
+  BAGUETTES = 'BAGUETTES',
+  FROGS = 'FROGS',
 }

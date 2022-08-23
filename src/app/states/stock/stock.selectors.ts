@@ -7,7 +7,14 @@ interface AppState {
 
 export const selectProducts = (state: AppState) => state.product;
 
-export const selectProductBySnails = createSelector(
+export const selectProductByCategories = (categories: string[]) =>
+  createSelector(selectProducts, (product: Product[]) => {
+    return product.filter((value) => {
+      return categories.includes(value.category);
+    });
+  });
+
+/* export const selectProductBySnails = createSelector(
   selectProducts,
   (product: Product[]) =>
     product.filter((value) => {
@@ -29,4 +36,4 @@ export const selectProductByFrogs = createSelector(
     product.filter((value) => {
       return value.category == ProductCategory.FROGS;
     })
-);
+); */

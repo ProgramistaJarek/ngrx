@@ -1,24 +1,16 @@
 <nav class="mt-2 col-start-1 col-end-2">
-  <ul class="flex">
-    <li
-      class="p-4 bg-orange-500 cursor-pointer rounded"
-      (click)="showProduct(0)"
+  <div class="flex">
+    <button
+      *ngFor="let enum of categories | keyvalue"
+      class="p-3 cursor-pointer rounded border border-orange-500 mr-3"
+      (click)="showProduct(enum.key)"
+      [ngClass]="{
+        'bg-orange-500': filters.includes(enum.key)
+      }"
     >
-      SNAILS
-    </li>
-    <li
-      class="p-4 bg-orange-500 cursor-pointer mx-2 rounded"
-      (click)="showProduct(1)"
-    >
-      BAGUETTES
-    </li>
-    <li
-      class="p-4 bg-orange-500 cursor-pointer rounded"
-      (click)="showProduct(2)"
-    >
-      FROGS
-    </li>
-  </ul>
+      {{ enum.key }}
+    </button>
+  </div>
 </nav>
 
 <div
