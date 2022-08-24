@@ -1,12 +1,17 @@
 import { createAction, props } from '@ngrx/store';
 import { Product } from 'src/app/utilities/Product';
 
+export const addProductCount = createAction(
+  '[Cart Component] Add Porduct Count',
+  props<{ count: number }>()
+);
+
 export const addProduct = createAction(
-  '[Cart Component] Add Porduct',
-  props<{ productId: number }>()
+  '[Cart Component] Add Products ',
+  props<{ product: Product }>()
 );
 
 export const deleteProduct = createAction(
   '[Cart Component] Delete Products ',
-  props<{ productId: number }>()
+  props<{ product: Product }>()
 );

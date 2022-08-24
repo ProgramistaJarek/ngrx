@@ -15,3 +15,8 @@ export const decrementProductInStock = createAction(
   '[Shop Component] Decrement Product In Stock',
   props<{ productId: number }>()
 );
+
+export const testProductInStock = createAction(
+  '[Shop Component] Test Product In Stock',
+  props<{ productId: number; count: number }>()
+);

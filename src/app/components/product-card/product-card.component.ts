@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Product } from 'src/app/utilities/Product';
 import * as productActions from 'src/app/states/product/product.actions';
-import * as productSelectors from 'src/app/states/product/product.selectors';
-import { addProduct } from 'src/app/states/cart/cart.actions';
+import * as cartActions from 'src/app/states/cart/cart.actions';
 
 @Component({
   selector: 'app-product-card',
@@ -14,15 +13,23 @@ import { addProduct } from 'src/app/states/cart/cart.actions';
 })
 export class ProductCardComponent {
   @Input() item!: Product;
+  count: number = 0;
 
   constructor(private store: Store<{ product: Product[] }>) {}
 
-  onPlus(productId: number) {
-    this.store.dispatch(productActions.incrementProductInStock({ productId }));
-    this.store.dispatch(addProduct({ productId }));
+  onPlus() {
+    this.count++;
   }
 
-  onMinus(productId: number) {
-    this.store.dispatch(productActions.decrementProductInStock({ productId }));
+  onMinus() {
+    this.count--;
+  }
+
+  onAddToCard(productId: number) {
+    this.store.dispatch(
+      productActions.testProductInStock({ productId, count: this.count })
+    );
+    this.store.dispatch(cartActions.addProductCount({ count: this.count }));
+    this.store.dispatch(cartActions.addProduct({ product: this.item }));
   }
 }

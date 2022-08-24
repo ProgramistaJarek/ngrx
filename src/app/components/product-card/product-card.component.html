@@ -4,20 +4,26 @@
     <h4>{{ item.name }}</h4>
     <p>{{ item.price }}zł</p>
     <p>{{ item.stars }} gwiazdki</p>
+    <p>in stock: {{ item.inStock }}</p>
     <div class="flex">
       <button
         class="bg-white text-black px-2 rounded"
-        (click)="onMinus(item.id)"
+        (click)="onMinus()"
+        [disabled]="count <= 0"
       >
         -
       </button>
-      <p class="mx-2">{{ item.inStock }}</p>
+      <p class="mx-2">{{ count }}</p>
       <button
         class="bg-white text-black px-2 rounded"
-        (click)="onPlus(item.id)"
+        (click)="onPlus()"
+        [disabled]="count >= item.inStock"
       >
         +
       </button>
     </div>
+    <button (click)="onAddToCard(item.id)" [disabled]="count <= 0">
+      Add to cart
+    </button>
   </div>
 </div>
