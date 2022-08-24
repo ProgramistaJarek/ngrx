@@ -13,6 +13,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { CartComponent } from './features/cart/cart.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { MiniCardComponent } from './components/mini-card/mini-card.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { environment } from '../environments/environment';
     ShopComponent,
     ProductCardComponent,
     CartComponent,
+    MiniCardComponent,
   ],
   imports: [
     BrowserModule,
