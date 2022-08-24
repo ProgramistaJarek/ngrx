@@ -28,7 +28,12 @@ export class ProductCardComponent {
     this.store.dispatch(
       productActions.reduceProductInStock({ productId, count: this.count })
     );
-    this.store.dispatch(cartActions.addProductCount({ count: this.count }));
+    this.store.dispatch(
+      cartActions.addProductCountAndPrice({
+        count: this.count,
+        toPay: this.item.price,
+      })
+    );
     this.store.dispatch(
       cartActions.addProductDetailsToCart({ product: this.item })
     );

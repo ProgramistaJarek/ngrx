@@ -19,9 +19,10 @@ export const cartInitialState: Cart = {
 
 export const cartReducer = createReducer(
   cartInitialState,
-  on(cartActions.addProductCount, (state: Cart, { count }) => ({
+  on(cartActions.addProductCountAndPrice, (state: Cart, { count, toPay }) => ({
     ...state,
     inCart: state.inCart + count,
+    toPay: state.toPay + count * toPay,
   })),
   on(cartActions.addProductDetailsToCart, (state: Cart, { product }) => {
     let products!: Product[];

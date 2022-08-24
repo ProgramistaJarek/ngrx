@@ -1,4 +1,6 @@
 <div *ngIf="cart$ | async as cart">
   <p>Produktów w koszyku: {{ cart.inCart }}</p>
   <p>Suma zamówienia: {{ cart.toPay }}</p>
+  {{ cart.products | json }}
+  {{ cart.productsInCart | json }}
 </div>

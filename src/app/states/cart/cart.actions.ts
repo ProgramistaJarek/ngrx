@@ -1,9 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 import { Product } from 'src/app/utilities/Product';
 
-export const addProductCount = createAction(
-  '[Cart Component] Add Porduct Count',
-  props<{ count: number }>()
+export const addProductCountAndPrice = createAction(
+  '[Cart Component] Add Porduct Count Adn Price',
+  props<{ count: number; toPay: number }>()
 );
 
 export const addProductDetailsToCart = createAction(
