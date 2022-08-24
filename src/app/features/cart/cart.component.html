@@ -4,3 +4,8 @@
   {{ cart.products | json }}
   {{ cart.productsInCart | json }}
 </div>
+
+Kategorie na dole
+<div *ngIf="products$ | async as product">
+  <app-mini-card *ngFor="let item of product"></app-mini-card>
+</div>

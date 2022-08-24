@@ -3,14 +3,14 @@ import * as cartActions from './cart.actions';
 import { Product } from '../../utilities/Product';
 import { ProductsInCart } from 'src/app/utilities/Cart';
 
-export interface Cart {
+export interface CartState {
   products: Product[];
   productsInCart: ProductsInCart[];
   inCart: number;
   toPay: number;
 }
 
-export const cartInitialState: Cart = {
+export const cartInitialState: CartState = {
   products: [],
   productsInCart: [],
   inCart: 0,
@@ -19,12 +19,15 @@ export const cartInitialState: Cart = {
 
 export const cartReducer = createReducer(
   cartInitialState,
-  on(cartActions.addProductCountAndPrice, (state: Cart, { count, toPay }) => ({
-    ...state,
-    inCart: state.inCart + count,
-    toPay: state.toPay + count * toPay,
-  })),
-  on(cartActions.addProductDetailsToCart, (state: Cart, { product }) => {
+  on(
+    cartActions.addProductCountAndPrice,
+    (state: CartState, { count, toPay }) => ({
+      ...state,
+      inCart: state.inCart + count,
+      toPay: state.toPay + count * toPay,
+    })
+  ),
+  on(cartActions.addProductDetailsToCart, (state: CartState, { product }) => {
     let products!: Product[];
     if (state.products.find((key) => key.id === product.id)) {
       state.products.map(() => {
@@ -41,7 +44,7 @@ export const cartReducer = createReducer(
   }),
   on(
     cartActions.showDetailsAboutProductsInCart,
-    (state: Cart, { productId, count }) => {
+    (state: CartState, { productId, count }) => {
       let productsInCart!: ProductsInCart[];
       if (state.productsInCart.find((key) => key.id === productId)) {
         productsInCart = state.productsInCart.map((value) =>
