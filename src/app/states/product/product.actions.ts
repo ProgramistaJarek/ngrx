@@ -6,6 +6,11 @@ export const retrievedProductsList = createAction(
   props<{ products: Product[] }>()
 );
 
+export const reduceProductInStock = createAction(
+  '[Shop Component] Reduce Product In Stock',
+  props<{ productId: number; count: number }>()
+);
+
 export const incrementProductInStock = createAction(
   '[Shop Component] Increment Product In Stock',
   props<{ productId: number }>()
@@ -14,9 +19,4 @@ export const incrementProductInStock = createAction(
 export const decrementProductInStock = createAction(
   '[Shop Component] Decrement Product In Stock',
   props<{ productId: number }>()
-);
-
-export const testProductInStock = createAction(
-  '[Shop Component] Test Product In Stock',
-  props<{ productId: number; count: number }>()
 );

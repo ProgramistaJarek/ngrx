@@ -6,9 +6,14 @@ export const addProductCount = createAction(
   props<{ count: number }>()
 );
 
-export const addProduct = createAction(
-  '[Cart Component] Add Products ',
+export const addProductDetailsToCart = createAction(
+  '[Cart Component] Add Products Details To Car',
   props<{ product: Product }>()
+);
+
+export const showDetailsAboutProductsInCart = createAction(
+  '[Cart Component] Show Details About Products In Cart',
+  props<{ productId: number; count: number }>()
 );
 
 export const deleteProduct = createAction(

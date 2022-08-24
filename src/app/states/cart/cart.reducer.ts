@@ -23,9 +23,8 @@ export const cartReducer = createReducer(
     ...state,
     inCart: state.inCart + count,
   })),
-  on(cartActions.addProduct, (state: Cart, { product }) => {
+  on(cartActions.addProductDetailsToCart, (state: Cart, { product }) => {
     let products!: Product[];
-
     if (state.products.find((key) => key.id === product.id)) {
       state.products.map(() => {
         products = [...state.products];
@@ -38,5 +37,25 @@ export const cartReducer = createReducer(
       ...state,
       products,
     };
-  })
+  }),
+  on(
+    cartActions.showDetailsAboutProductsInCart,
+    (state: Cart, { productId, count }) => {
+      let productsInCart!: ProductsInCart[];
+      if (state.productsInCart.find((key) => key.id === productId)) {
+        productsInCart = state.productsInCart.map((value) =>
+          value.id === productId
+            ? { ...value, count: value.count + count }
+            : value
+        );
+      } else {
+        productsInCart = [...state.productsInCart, { id: productId, count }];
+      }
+
+      return {
+        ...state,
+        productsInCart,
+      };
+    }
+  )
 );

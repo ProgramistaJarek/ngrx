@@ -1,4 +1,4 @@
 export interface ProductsInCart {
-  name: string;
+  id: number;
   count: number;
 }

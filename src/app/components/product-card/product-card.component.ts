@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
 import { Product } from 'src/app/utilities/Product';
 import * as productActions from 'src/app/states/product/product.actions';
@@ -27,9 +26,17 @@ export class ProductCardComponent {
 
   onAddToCard(productId: number) {
     this.store.dispatch(
-      productActions.testProductInStock({ productId, count: this.count })
+      productActions.reduceProductInStock({ productId, count: this.count })
     );
     this.store.dispatch(cartActions.addProductCount({ count: this.count }));
-    this.store.dispatch(cartActions.addProduct({ product: this.item }));
+    this.store.dispatch(
+      cartActions.addProductDetailsToCart({ product: this.item })
+    );
+    this.store.dispatch(
+      cartActions.showDetailsAboutProductsInCart({
+        productId: this.item.id,
+        count: this.count,
+      })
+    );
   }
 }
