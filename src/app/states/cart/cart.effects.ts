@@ -12,7 +12,7 @@ export class CartEffects {
       this.actions$.pipe(
         ofType(cartActions.addProductDetailsToCart),
         tap(() => {
-          alert('dodałes produkt do koszyka');
+          console.log('dodałes produkt do koszyka');
         })
       ),
     { dispatch: false }
@@ -22,8 +22,10 @@ export class CartEffects {
     () =>
       this.actions$.pipe(
         ofType(cartActions.updateDetailsAboutProductInCart),
-        tap(() => {
-          alert('ilosc');
+        tap(({ count }) => {
+          count == 1
+            ? console.log('zwiekszyles ilosc w koszyku')
+            : console.log('zmniejszyles ilosc w koszyku');
         })
       ),
     { dispatch: false }
@@ -34,7 +36,7 @@ export class CartEffects {
       this.actions$.pipe(
         ofType(cartActions.deleteProductFromCart),
         tap(() => {
-          alert('usuniecie produktu');
+          console.log('Usunales produky z koszyka');
         })
       ),
     { dispatch: false }
@@ -45,7 +47,7 @@ export class CartEffects {
       this.actions$.pipe(
         ofType(cartActions.clearCart),
         tap(() => {
-          alert('wyczyszczono koszyk');
+          console.log('Koszyk został opróżniony');
         })
       ),
     { dispatch: false }

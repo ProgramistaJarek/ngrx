@@ -17,6 +17,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { MiniCardComponent } from './components/mini-card/mini-card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CartComponent,
     MiniCardComponent,
     NavbarComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
