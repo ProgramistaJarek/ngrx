@@ -26,17 +26,20 @@ export class ProductCardComponent {
 
   onAddToCard(productId: number) {
     this.store.dispatch(
-      productActions.reduceProductInStock({ productId, count: this.count })
+      productActions.chengeProductInStock({ productId, count: this.count })
     );
     this.store.dispatch(
-      cartActions.addProductDetailsToCart({ product: this.item })
+      cartActions.addProductDetailsToCart({
+        product: this.item,
+        count: this.count,
+      })
     );
-    this.store.dispatch(
-      cartActions.updateDetailsAboutProductsInCart({
+    /* this.store.dispatch(
+      cartActions.updateDetailsAboutProductInCart({
         productId: this.item.id,
         count: this.count,
         toPay: this.item.price,
       })
-    );
+    ); */
   }
 }

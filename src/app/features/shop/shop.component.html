@@ -15,7 +15,7 @@
 
 <div
   *ngIf="products$ | async as product"
-  class="flex flex-wrap row-start-2 row-span-2 col-start-1 col-span-3"
+  class="flex flex-wrap row-start-2 col-start-1 col-span-3"
 >
   <app-product-card
     *ngFor="let item of product"
@@ -23,4 +23,4 @@
   ></app-product-card>
 </div>
 
-<app-cart class="row-start-2 col-start-4"></app-cart>
+<app-cart class="row-start-2 row-span-2 col-start-4"></app-cart>

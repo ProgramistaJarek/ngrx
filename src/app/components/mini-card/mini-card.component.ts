@@ -27,28 +27,28 @@ export class MiniCardComponent implements OnInit {
 
   changeInStockByOne(x: number) {
     this.store.dispatch(
-      cartActions.updateDetailsAboutProductsInCart({
+      cartActions.updateDetailsAboutProductInCart({
         productId: this.item.id,
         count: x,
         toPay: this.item.price,
       })
     );
     this.store.dispatch(
-      productActions.reduceProductInStock({
+      productActions.chengeProductInStock({
         productId: this.item.id,
         count: x,
       })
     );
   }
 
-  onDelete(x: number) {
+  onDelete(negativeStockCount: number) {
     this.store.dispatch(
       cartActions.deleteProductFromCart({ productId: this.item.id })
     );
     this.store.dispatch(
-      productActions.reduceProductInStock({
+      productActions.chengeProductInStock({
         productId: this.item.id,
-        count: -x,
+        count: negativeStockCount,
       })
     );
   }

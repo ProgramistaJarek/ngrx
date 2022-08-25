@@ -3,13 +3,14 @@
   <p>Suma zamówienia: {{ cart.toPay }}</p>
   <button
     *ngIf="cart.inCart != 0"
-    class="bg-orange-500 text-white p-3 rounded"
+    class="bg-black text-white p-3 rounded w-full my-4"
     (click)="onClearCart()"
   >
-    Wyczyść koszyk</button
-  ><br />
+    Wyczyść koszyk
+  </button>
 </div>
 
+<!-- Need to change this -->
 <div *ngIf="snails$ | async as product">
   <app-mini-card *ngFor="let item of product" [item]="item"></app-mini-card>
 </div>

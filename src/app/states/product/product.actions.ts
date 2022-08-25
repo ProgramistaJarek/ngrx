@@ -6,7 +6,7 @@ export const retrievedProductsList = createAction(
   props<{ products: Product[] }>()
 );
 
-export const reduceProductInStock = createAction(
-  '[Shop Component] Reduce Product In Stock',
+export const chengeProductInStock = createAction(
+  '[Shop Component] Chenge Product In Stock',
   props<{ productId: number; count: number }>()
 );

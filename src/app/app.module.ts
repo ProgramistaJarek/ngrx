@@ -5,8 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { productReducer } from './states/product/product.reducer';
 import { cartReducer } from './states/cart/cart.reducer';
+import { CartEffects } from './states/cart/cart.effects';
 
 import { ShopComponent } from './features/shop/shop.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
@@ -33,6 +35,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
       maxAge: 25,
       logOnly: environment.production,
     }),
+    EffectsModule.forRoot([CartEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

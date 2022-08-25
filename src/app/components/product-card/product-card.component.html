@@ -1,29 +1,32 @@
-<div class="w-64 p-4 rounded bg-black text-white my-1 mx-2">
+<div class="w-64 p-4 rounded bg-black text-white my-1 mr-4">
   <img [src]="item.imgUrl" alt="dsad" />
   <div class="flex flex-col items-center">
     <h4>{{ item.name }}</h4>
     <p>{{ item.price }}zł</p>
     <p>{{ item.stars }} gwiazdki</p>
     <p>in stock: {{ item.inStock }}</p>
-    <div class="flex">
-      <button
-        class="bg-white text-black px-2 rounded"
-        (click)="onMinus()"
-        [disabled]="count <= 0"
-      >
-        -
-      </button>
-      <p class="mx-2">{{ count }}</p>
-      <button
-        class="bg-white text-black px-2 rounded"
-        (click)="onPlus()"
-        [disabled]="count >= item.inStock"
-      >
-        +
+    <div *ngIf="item.inStock; else outOfStock">
+      <div class="flex">
+        <button
+          class="bg-white text-black px-2 rounded"
+          (click)="onMinus()"
+          [disabled]="count <= 0"
+        >
+          -
+        </button>
+        <p class="mx-2">{{ count }}</p>
+        <button
+          class="bg-white text-black px-2 rounded"
+          (click)="onPlus()"
+          [disabled]="count >= item.inStock"
+        >
+          +
+        </button>
+      </div>
+      <button (click)="onAddToCard(item.id)" [disabled]="count <= 0">
+        Add to cart
       </button>
     </div>
-    <button (click)="onAddToCard(item.id)" [disabled]="count <= 0">
-      Add to cart
-    </button>
+    <ng-template #outOfStock>Out of stock</ng-template>
   </div>
 </div>

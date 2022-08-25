@@ -20,30 +20,40 @@ export const cartInitialState: CartState = {
 export const cartReducer = createReducer(
   cartInitialState,
   on(
-    cartActions.addProductCountAndPrice,
-    (state: CartState, { count, toPay }) => ({
-      ...state,
-      inCart: state.inCart + count,
-      toPay: state.toPay + count * toPay,
-    })
-  ),
-  on(cartActions.addProductDetailsToCart, (state: CartState, { product }) => {
-    let products!: Product[];
-    if (state.products.find((key) => key.id === product.id)) {
-      state.products.map(() => {
-        products = [...state.products];
-      });
-    } else {
-      products = [...state.products, product];
-    }
+    cartActions.addProductDetailsToCart,
+    (state: CartState, { product, count }) => {
+      let products!: Product[];
 
-    return {
-      ...state,
-      products,
-    };
-  }),
+      if (state.products.find((key) => key.id === product.id)) {
+        state.products.map(() => {
+          products = [...state.products];
+        });
+      } else {
+        products = [...state.products, product];
+      }
+
+      let productsInCart!: ProductsInCart[];
+      if (state.productsInCart.find((key) => key.id === product.id)) {
+        productsInCart = state.productsInCart.map((value) =>
+          value.id === product.id
+            ? { ...value, count: value.count + count }
+            : value
+        );
+      } else {
+        productsInCart = [...state.productsInCart, { id: product.id, count }];
+      }
+
+      return {
+        ...state,
+        products,
+        productsInCart,
+        inCart: state.inCart + count,
+        toPay: state.toPay + count * product.price,
+      };
+    }
+  ),
   on(
-    cartActions.updateDetailsAboutProductsInCart,
+    cartActions.updateDetailsAboutProductInCart,
     (state: CartState, { productId, count, toPay }) => {
       let productsInCart!: ProductsInCart[];
       if (state.productsInCart.find((key) => key.id === productId)) {

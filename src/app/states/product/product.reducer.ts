@@ -20,7 +20,7 @@ export const productReducer = createReducer(
     })
   ),
   on(
-    productActions.reduceProductInStock,
+    productActions.chengeProductInStock,
     (state: ProductState, { productId, count }) => {
       const products = state.products.map((value) =>
         value.id === productId
