@@ -13,7 +13,7 @@ export const addProductDetailsToCart = createAction(
 
 export const updateDetailsAboutProductsInCart = createAction(
   '[Cart Component] Update Details About Products In Cart',
-  props<{ productId: number; count: number }>()
+  props<{ productId: number; count: number; toPay: number }>()
 );
 
 export const clearCart = createAction('[Cart Component] Clear Cart ');

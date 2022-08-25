@@ -44,7 +44,7 @@ export const cartReducer = createReducer(
   }),
   on(
     cartActions.updateDetailsAboutProductsInCart,
-    (state: CartState, { productId, count }) => {
+    (state: CartState, { productId, count, toPay }) => {
       let productsInCart!: ProductsInCart[];
       if (state.productsInCart.find((key) => key.id === productId)) {
         productsInCart = state.productsInCart.map((value) =>
@@ -59,6 +59,8 @@ export const cartReducer = createReducer(
       return {
         ...state,
         productsInCart,
+        inCart: state.inCart + count,
+        toPay: state.toPay + count * toPay,
       };
     }
   ),

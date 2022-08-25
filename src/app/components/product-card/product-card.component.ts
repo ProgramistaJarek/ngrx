@@ -29,18 +29,13 @@ export class ProductCardComponent {
       productActions.reduceProductInStock({ productId, count: this.count })
     );
     this.store.dispatch(
-      cartActions.addProductCountAndPrice({
-        count: this.count,
-        toPay: this.item.price,
-      })
-    );
-    this.store.dispatch(
       cartActions.addProductDetailsToCart({ product: this.item })
     );
     this.store.dispatch(
       cartActions.updateDetailsAboutProductsInCart({
         productId: this.item.id,
         count: this.count,
+        toPay: this.item.price,
       })
     );
   }

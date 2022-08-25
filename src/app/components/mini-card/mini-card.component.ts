@@ -30,6 +30,7 @@ export class MiniCardComponent implements OnInit {
       cartActions.updateDetailsAboutProductsInCart({
         productId: this.item.id,
         count: x,
+        toPay: this.item.price,
       })
     );
     this.store.dispatch(
@@ -40,9 +41,15 @@ export class MiniCardComponent implements OnInit {
     );
   }
 
-  onDelete() {
+  onDelete(x: number) {
     this.store.dispatch(
       cartActions.deleteProductFromCart({ productId: this.item.id })
+    );
+    this.store.dispatch(
+      productActions.reduceProductInStock({
+        productId: this.item.id,
+        count: -x,
+      })
     );
   }
 }
