@@ -7,7 +7,7 @@ interface cartAppState {
 
 const selectCarts = (state: cartAppState) => state.cart;
 
-export const showProductsInCartByCategory = createSelector(
+export const showProductsInCartBySnails = createSelector(
   selectCarts,
   (state: CartState) => {
     return state.products.filter((value) => {
@@ -15,3 +15,28 @@ export const showProductsInCartByCategory = createSelector(
     });
   }
 );
+
+export const showProductsInCartByBaguettes = createSelector(
+  selectCarts,
+  (state: CartState) => {
+    return state.products.filter((value) => {
+      return value.category == 'BAGUETTES';
+    });
+  }
+);
+
+export const showProductsInCartByFrogs = createSelector(
+  selectCarts,
+  (state: CartState) => {
+    return state.products.filter((value) => {
+      return value.category == 'FROGS';
+    });
+  }
+);
+
+export const numberOfProductInCart = (productId: number) =>
+  createSelector(selectCarts, (state: CartState) => {
+    return state.productsInCart.find((value) => {
+      return value.id === productId;
+    });
+  });

@@ -1,1 +1,26 @@
-<p>mini-card works!</p>
+<div class="bg-black p-4 rounded my-2 text-white flex">
+  <img src="{{ item.imgUrl }}" alt="{{ item.name }}" class="w-20" />
+  <div class="w-full text-center">
+    <h4 class="font-bold uppercase">{{ item.name }}</h4>
+
+    <div class="flex justify-center" *ngIf="inStock$ | async as stock">
+      <button
+        class="bg-white text-black px-2 rounded"
+        (click)="changeInStockByOne(-1)"
+        [disabled]="stock.count <= 1"
+      >
+        -
+      </button>
+      <p class="mx-2">{{ stock.count }}</p>
+      <button
+        class="bg-white text-black px-2 rounded"
+        (click)="changeInStockByOne(1)"
+        [disabled]="stock.count >= item.inStock"
+      >
+        +
+      </button>
+    </div>
+
+    <button (click)="onDelete()">Delete</button>
+  </div>
+</div>

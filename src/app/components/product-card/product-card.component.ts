@@ -38,7 +38,7 @@ export class ProductCardComponent {
       cartActions.addProductDetailsToCart({ product: this.item })
     );
     this.store.dispatch(
-      cartActions.showDetailsAboutProductsInCart({
+      cartActions.updateDetailsAboutProductsInCart({
         productId: this.item.id,
         count: this.count,
       })

@@ -43,7 +43,7 @@ export const cartReducer = createReducer(
     };
   }),
   on(
-    cartActions.showDetailsAboutProductsInCart,
+    cartActions.updateDetailsAboutProductsInCart,
     (state: CartState, { productId, count }) => {
       let productsInCart!: ProductsInCart[];
       if (state.productsInCart.find((key) => key.id === productId)) {
@@ -61,5 +61,29 @@ export const cartReducer = createReducer(
         productsInCart,
       };
     }
-  )
+  ),
+  on(cartActions.clearCart, (state: CartState) => {
+    return {
+      products: [],
+      productsInCart: [],
+      inCart: 0,
+      toPay: 0,
+    };
+  }),
+  on(cartActions.deleteProductFromCart, (state: CartState, { productId }) => {
+    const inCartDelete = state.productsInCart.filter(
+      (key) => key.id === productId
+    );
+    const toPayDelete = state.products.filter((key) => key.id === productId);
+
+    return {
+      ...state,
+      products: state.products.filter((key) => key.id !== productId),
+      productsInCart: state.productsInCart.filter(
+        (key) => key.id !== productId
+      ),
+      inCart: state.inCart - inCartDelete[0].count,
+      toPay: state.toPay - inCartDelete[0].count * toPayDelete[0].price,
+    };
+  })
 );

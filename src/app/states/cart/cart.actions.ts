@@ -11,12 +11,14 @@ export const addProductDetailsToCart = createAction(
   props<{ product: Product }>()
 );
 
-export const showDetailsAboutProductsInCart = createAction(
-  '[Cart Component] Show Details About Products In Cart',
+export const updateDetailsAboutProductsInCart = createAction(
+  '[Cart Component] Update Details About Products In Cart',
   props<{ productId: number; count: number }>()
 );
 
-export const deleteProduct = createAction(
-  '[Cart Component] Delete Products ',
-  props<{ product: Product }>()
+export const clearCart = createAction('[Cart Component] Clear Cart ');
+
+export const deleteProductFromCart = createAction(
+  '[Cart Component] Delete Product From Cart ',
+  props<{ productId: number }>()
 );

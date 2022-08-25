@@ -1,11 +1,23 @@
 <div *ngIf="cart$ | async as cart">
   <p>Produktów w koszyku: {{ cart.inCart }}</p>
   <p>Suma zamówienia: {{ cart.toPay }}</p>
-  {{ cart.products | json }}
-  {{ cart.productsInCart | json }}
+  <button
+    *ngIf="cart.inCart != 0"
+    class="bg-orange-500 text-white p-3 rounded"
+    (click)="onClearCart()"
+  >
+    Wyczyść koszyk</button
+  ><br />
 </div>
 
-Kategorie na dole
-<div *ngIf="products$ | async as product">
-  <app-mini-card *ngFor="let item of product"></app-mini-card>
+<div *ngIf="snails$ | async as product">
+  <app-mini-card *ngFor="let item of product" [item]="item"></app-mini-card>
+</div>
+
+<div *ngIf="baguettes$ | async as product">
+  <app-mini-card *ngFor="let item of product" [item]="item"></app-mini-card>
+</div>
+
+<div *ngIf="frogs$ | async as product">
+  <app-mini-card *ngFor="let item of product" [item]="item"></app-mini-card>
 </div>
