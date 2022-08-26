@@ -34,12 +34,5 @@ export class ProductCardComponent {
         count: this.count,
       })
     );
-    /* this.store.dispatch(
-      cartActions.updateDetailsAboutProductInCart({
-        productId: this.item.id,
-        count: this.count,
-        toPay: this.item.price,
-      })
-    ); */
   }
 }

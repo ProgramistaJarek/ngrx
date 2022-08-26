@@ -33,5 +33,28 @@ export const productReducer = createReducer(
         products,
       };
     }
+  ),
+  on(
+    productActions.updateProductsOnDeleteCart,
+    (state: ProductState, { products }) => {
+      let updatedStoredArr = products.map((keyA) => {
+        const exists = state.products.find((keyB) => keyA.id == keyB.id);
+
+        if (exists) {
+          return { ...exists, inStock: exists.inStock + keyA.count };
+        }
+        return;
+      });
+
+      const chengeStateProducts = state.products.map(
+        (product) =>
+          updatedStoredArr.find((obj) => obj?.id === product.id) || product
+      );
+
+      return {
+        ...state,
+        products: chengeStateProducts,
+      };
+    }
   )
 );

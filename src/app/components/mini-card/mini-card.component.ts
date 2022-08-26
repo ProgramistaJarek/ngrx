@@ -21,7 +21,7 @@ export class MiniCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.inStock$ = this.store.select(
-      cartSelectors.numberOfProductInCart(this.item.id)
+      cartSelectors.numberOfProductInCartById(this.item.id)
     );
   }
 

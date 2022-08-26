@@ -11,7 +11,7 @@ export const showProductsInCartBySnails = createSelector(
   selectCarts,
   (state: CartState) => {
     return state.products.filter((value) => {
-      return value.category == 'SNAILS';
+      return value.category == 'LUZ';
     });
   }
 );
@@ -20,7 +20,7 @@ export const showProductsInCartByBaguettes = createSelector(
   selectCarts,
   (state: CartState) => {
     return state.products.filter((value) => {
-      return value.category == 'BAGUETTES';
+      return value.category == 'PALETA';
     });
   }
 );
@@ -29,14 +29,28 @@ export const showProductsInCartByFrogs = createSelector(
   selectCarts,
   (state: CartState) => {
     return state.products.filter((value) => {
-      return value.category == 'FROGS';
+      return value.category == 'BIGBAG';
     });
   }
 );
 
-export const numberOfProductInCart = (productId: number) =>
+export const showProductsInCart = createSelector(
+  selectCarts,
+  (state: CartState) => {
+    return state.products.map((value) => {
+      return value.category;
+    });
+  }
+);
+
+export const numberOfProductInCartById = (productId: number) =>
   createSelector(selectCarts, (state: CartState) => {
     return state.productsInCart.find((value) => {
       return value.id === productId;
     });
   });
+
+export const numberOfProductInCart = createSelector(
+  selectCarts,
+  (state: CartState) => state.productsInCart
+);

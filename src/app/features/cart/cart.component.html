@@ -1,17 +1,62 @@
 <div *ngIf="cart$ | async as cart">
   <p>Produktów w koszyku: {{ cart.inCart }}</p>
-  <p>Suma zamówienia: {{ cart.toPay }}</p>
+  <p>Suma zamówienia: {{ cart.toPay | currency: "PLN " }}</p>
   <button
     *ngIf="cart.inCart != 0"
     class="bg-black text-white p-3 rounded w-full my-4"
-    (click)="onClearCart()"
+    (click)="onClearCart(cart.productsInCart)"
   >
     Wyczyść koszyk
   </button>
-</div>
 
-<!-- Need to change this -->
-<div *ngIf="snails$ | async as product">
+  <div *ngIf="cart.inCart">
+    <div *ngFor="let enum of categories | keyvalue">
+      <p *ngIf="enum">{{ enum.key }}</p>
+
+      <div *ngFor="let item of cart.products">
+        <app-mini-card
+          *ngIf="enum.key == item.category"
+          [item]="item"
+        ></app-mini-card>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div *ngIf="cart.inCart">
+    <div *ngIf="test$ | async as products">
+      <div
+        *ngFor="let enum of categories | keyvalue; let i = index"
+        class="flex flex-col"
+      >
+        <div *ngFor="let item of products">
+          <ng-container [ngSwitch]="item.category">
+            <ng-container *ngSwitchCase="enum.key">
+              {{ enum.key }}
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div *ngIf="cart.inCart">
+    <div *ngIf="cart.products as products">
+      <div
+        *ngFor="let enum of categories | keyvalue; let i = index"
+        class="flex flex-col"
+      >
+        <div *ngFor="let item of products">
+          <app-mini-card
+            *ngIf="enum.key == item.category"
+            [item]="item"
+          ></app-mini-card>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Need to change this -->
+  <!-- <div *ngIf="snails$ | async as product">
   <app-mini-card *ngFor="let item of product" [item]="item"></app-mini-card>
 </div>
 
@@ -21,4 +66,17 @@
 
 <div *ngIf="frogs$ | async as product">
   <app-mini-card *ngFor="let item of product" [item]="item"></app-mini-card>
+</div> -->
+
+  <!-- <div *ngFor="let enum of categories | keyvalue" class="flex flex-col">
+  <div *ngIf="test$ | async as products">
+    <div *ngFor="let product of products">
+      <div *ngIf="product.category == enum.key">
+        {{ enum.key }}
+        <app-mini-card [item]="product"></app-mini-card>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
 </div>
