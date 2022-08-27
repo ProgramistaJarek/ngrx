@@ -20,9 +20,9 @@ import { CartComponent } from './features/cart/cart.component';
 import { MiniCardComponent } from './components/mini-card/mini-card.component';
  */
 
-import { ToastModule } from './features/toast/toast.module';
-import { CartModule } from './features/cart/cart.module';
 import { ShopModule } from './features/shop/shop.module';
+import { CartModule } from './features/cart/cart.module';
+import { NotifyModule } from './utilities/notify/notify.module';
 
 @NgModule({
   declarations: [
@@ -43,10 +43,10 @@ import { ShopModule } from './features/shop/shop.module';
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([CartEffects]),
-    ToastModule,
     BrowserAnimationsModule,
-    CartModule,
     ShopModule,
+    CartModule,
+    NotifyModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

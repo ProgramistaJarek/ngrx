@@ -6,6 +6,7 @@ import { MiniCardComponent } from 'src/app/components/mini-card/mini-card.compon
 
 @NgModule({
   declarations: [CartComponent, MiniCardComponent],
+  exports: [CartComponent],
   imports: [CommonModule],
 })
 export class CartModule {}

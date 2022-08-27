@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PortalModule } from '@angular/cdk/portal';
-
-import { ToastComponent } from './toast.component';
+import { NotifyComponent } from './components/notify.component';
 
 @NgModule({
-  declarations: [ToastComponent],
+  declarations: [NotifyComponent],
   imports: [CommonModule, PortalModule],
 })
-export class ToastModule {}
+export class NotifyModule {}
