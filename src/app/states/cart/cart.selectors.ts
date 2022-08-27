@@ -7,6 +7,28 @@ interface cartAppState {
 
 const selectCarts = (state: cartAppState) => state.cart;
 
+export const showProductsInCartByCategory = createSelector(
+  selectCarts,
+  (state: CartState) => {
+    return state.products.map((value) => {
+      return value.category;
+    });
+  }
+);
+
+export const numberOfProductInCartById = (productId: number) =>
+  createSelector(selectCarts, (state: CartState) => {
+    return state.productsInCart.find((value) => {
+      return value.id === productId;
+    });
+  });
+
+export const numberOfProductInCart = createSelector(
+  selectCarts,
+  (state: CartState) => state.productsInCart
+);
+
+/* 
 export const showProductsInCartBySnails = createSelector(
   selectCarts,
   (state: CartState) => {
@@ -33,24 +55,4 @@ export const showProductsInCartByFrogs = createSelector(
     });
   }
 );
-
-export const showProductsInCart = createSelector(
-  selectCarts,
-  (state: CartState) => {
-    return state.products.map((value) => {
-      return value.category;
-    });
-  }
-);
-
-export const numberOfProductInCartById = (productId: number) =>
-  createSelector(selectCarts, (state: CartState) => {
-    return state.productsInCart.find((value) => {
-      return value.id === productId;
-    });
-  });
-
-export const numberOfProductInCart = createSelector(
-  selectCarts,
-  (state: CartState) => state.productsInCart
-);
+*/

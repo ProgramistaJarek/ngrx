@@ -12,7 +12,7 @@ import * as cartActions from 'src/app/states/cart/cart.actions';
 })
 export class ProductCardComponent {
   @Input() item!: Product;
-  count: number = 0;
+  count: number = 1;
 
   constructor(private store: Store<{ product: Product[] }>) {}
 

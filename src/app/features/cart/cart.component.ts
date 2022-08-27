@@ -16,11 +16,7 @@ import { ProductsInCart } from 'src/app/utilities/Cart';
 })
 export class CartComponent {
   cart$!: Observable<CartState>;
-
-  snails$ = this.store.select(cartSelectors.showProductsInCartBySnails);
-  baguettes$ = this.store.select(cartSelectors.showProductsInCartByBaguettes);
-  frogs$ = this.store.select(cartSelectors.showProductsInCartByFrogs);
-  test$ = this.store.select(cartSelectors.showProductsInCart);
+  test$ = this.store.select(cartSelectors.showProductsInCartByCategory);
 
   categories = ProductCategory;
 
