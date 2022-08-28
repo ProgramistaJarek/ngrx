@@ -3,10 +3,14 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs/operators';
 
 import * as cartActions from './cart.actions';
+import { NotifyService } from 'src/app/utilities/notify/notify.service';
 
 @Injectable()
 export class CartEffects {
-  constructor(private actions$: Actions) {}
+  constructor(
+    private actions$: Actions,
+    private notifyService: NotifyService
+  ) {}
 
   addProductDetailsToCart$ = createEffect(
     () =>
@@ -14,6 +18,7 @@ export class CartEffects {
         ofType(cartActions.addProductDetailsToCart),
         tap(() => {
           console.log('dodałes produkt do koszyka');
+          this.notifyService.showNotify();
         })
       ),
     { dispatch: false }

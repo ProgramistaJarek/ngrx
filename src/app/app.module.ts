@@ -21,7 +21,6 @@ import { MiniCardComponent } from './components/mini-card/mini-card.component';
  */
 
 import { ShopModule } from './features/shop/shop.module';
-import { CartModule } from './features/cart/cart.module';
 import { NotifyModule } from './utilities/notify/notify.module';
 
 @NgModule({
@@ -45,7 +44,6 @@ import { NotifyModule } from './utilities/notify/notify.module';
     EffectsModule.forRoot([CartEffects]),
     BrowserAnimationsModule,
     ShopModule,
-    CartModule,
     NotifyModule,
   ],
   providers: [],

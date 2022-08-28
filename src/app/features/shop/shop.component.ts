@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
-import { ProductCategory } from 'src/app/utilities/Product';
 import * as productActions from 'src/app/states/product/product.actions';
 import * as productSelectors from 'src/app/states/product/product.selectors';
 import { ProductsService } from 'src/app/services/products.service';
@@ -15,7 +13,6 @@ import { productAppState } from 'src/app/states/AppState';
 })
 export class ShopComponent {
   products$ = this.store.select(productSelectors.selectAllProducts);
-  categories = ProductCategory;
   filters: string[] = [];
 
   constructor(

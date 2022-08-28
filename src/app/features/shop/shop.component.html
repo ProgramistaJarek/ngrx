@@ -1,17 +1,9 @@
-<nav class="mt-2">
-  <div class="flex">
-    <button
-      *ngFor="let enum of categories | keyvalue"
-      class="p-3 cursor-pointer rounded border border-orange-500 mr-3"
-      (click)="showProduct(enum.key)"
-      [ngClass]="{
-        'bg-orange-500': filters.includes(enum.key)
-      }"
-    >
-      {{ enum.key }}
-    </button>
-  </div>
-</nav>
+<app-filters
+  [filters]="filters"
+  (showProduct)="showProduct($event)"
+></app-filters>
+
+<ng-template cdkPortal><ng-content></ng-content></ng-template>
 
 <div
   *ngIf="products$ | async as product"
@@ -22,3 +14,5 @@
     [item]="item"
   ></app-product-card>
 </div>
+
+<app-cart class="row-start-2 row-span-2 col-start-4"></app-cart>

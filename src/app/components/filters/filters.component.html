@@ -1,0 +1,14 @@
+<nav class="my-2">
+  <div class="flex">
+    <button
+      *ngFor="let enum of categories | keyvalue"
+      class="p-3 cursor-pointer rounded border border-orange-500 mr-3"
+      (click)="onShowProduct(enum.key)"
+      [ngClass]="{
+        'bg-orange-500': filters.includes(enum.key)
+      }"
+    >
+      {{ enum.key }}
+    </button>
+  </div>
+</nav>
