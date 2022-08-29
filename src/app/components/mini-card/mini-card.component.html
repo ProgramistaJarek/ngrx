@@ -1,32 +1,33 @@
 <div class="bg-black p-4 rounded my-2 text-white flex">
   <img src="{{ item.imgUrl }}" alt="{{ item.name }}" class="w-20" />
-  <div class="w-full flex flex-col items-center justify-between px-4">
+  <div class="w-full flex flex-col justify-around px-4">
     <h4 class="font-bold uppercase text-center">{{ item.name }}</h4>
 
-    <div class="flex flex-col items-center" *ngIf="inStock$ | async as stock">
+    <div class="w-full flex justify-between" *ngIf="inStock$ | async as stock">
       <div class="flex">
         <button
-          class="bg-white text-black px-2 rounded"
+          class="flex"
+          [ngClass]="stock.count <= 1 ? '' : 'hover:text-orange-500'"
           (click)="changeInStockByOne(-1)"
           [disabled]="stock.count <= 1"
         >
-          -
+          <mat-icon>remove</mat-icon>
         </button>
         <p class="mx-2">{{ stock.count }}</p>
         <button
-          class="bg-white text-black px-2 rounded"
+          class="flex"
+          [ngClass]="stock.count >= item.inStock ? '' : 'hover:text-orange-500'"
           (click)="changeInStockByOne(1)"
           [disabled]="stock.count >= item.inStock"
         >
-          +
+          <mat-icon>add</mat-icon>
         </button>
       </div>
       <button
-        class="mt-2"
+        class="flex hover:text-orange-500"
         (click)="onDelete(-stock.count)"
-        class="bg-orange-500 p-1 mt-2 rounded"
       >
-        Delete
+        <mat-icon>remove_shopping_cart</mat-icon>
       </button>
     </div>
   </div>

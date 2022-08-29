@@ -1,40 +1,53 @@
-<div
-  class="w-64 p-4 rounded bg-black text-white mb-2 mr-2 flex flex-col items-center"
->
+<div class="w-64 p-4 rounded bg-black text-white mb-2 mr-2 flex flex-col">
   <img [src]="item.imgUrl" alt="dsad" class="object-cover h-72" />
   <div class="flex flex-col items-center">
     <h4 class="font-semibold capitalize">{{ item.name }}</h4>
-    <p class="font-medium">{{ item.price | currency: "PLN " }}</p>
-    <p>{{ item.stars }} gwiazdki</p>
-    <p>in stock: {{ item.inStock }}</p>
-    <div *ngIf="item.inStock; else outOfStock">
-      <div class="flex justify-center">
+
+    <app-rating [stars]="item.stars" class="flex mt-1"></app-rating>
+
+    <div class="w-full flex justify-between mt-1">
+      <p>in stock: {{ item.inStock }}</p>
+      <p class="font-medium">
+        {{ item.price | currency: "PLN " }}
+      </p>
+    </div>
+
+    <div
+      *ngIf="item.inStock; else outOfStock"
+      class="flex items-center justify-between w-full mt-1"
+    >
+      <div class="flex">
         <button
-          class="bg-white text-black px-2 rounded"
+          class="flex"
           (click)="onMinus()"
+          [ngClass]="count <= 1 ? '' : 'hover:text-orange-500'"
           [disabled]="count <= 1"
         >
-          -
+          <mat-icon>remove</mat-icon>
         </button>
         <p class="mx-2">{{ count }}</p>
         <button
-          class="bg-white text-black px-2 rounded"
+          class="flex"
+          [ngClass]="count >= item.inStock ? '' : 'hover:text-orange-500'"
           (click)="onPlus()"
           [disabled]="count >= item.inStock"
         >
-          +
+          <mat-icon>add</mat-icon>
         </button>
       </div>
+
       <button
         (click)="onAddToCard(item.id)"
+        [ngClass]="count <= 0 ? '' : 'hover:text-orange-500'"
         [disabled]="count <= 0"
-        class="bg-orange-500 p-1 mt-2 rounded"
+        class="flex"
       >
-        Add to cart
+        <mat-icon>add_shopping_cart</mat-icon>
       </button>
     </div>
+
     <ng-template #outOfStock
-      ><p class="text-red-500">Out of stock</p>
+      ><p class="text-red-500 mt-1">Out of stock</p>
     </ng-template>
   </div>
 </div>

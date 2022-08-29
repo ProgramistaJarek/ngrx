@@ -1,0 +1,4 @@
+<div *ngFor="let star of maxStars">
+  <mat-icon *ngIf="stars >= star">star</mat-icon>
+  <mat-icon *ngIf="stars < star">star_border</mat-icon>
+</div>

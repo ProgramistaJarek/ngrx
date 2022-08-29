@@ -6,7 +6,6 @@ import { CartState } from 'src/app/states/cart/cart.reducer';
 import * as cartActions from 'src/app/states/cart/cart.actions';
 import * as cartSelectors from 'src/app/states/cart/cart.selectors';
 import { updateProductsOnDeleteCart } from 'src/app/states/product/product.actions';
-import { ProductCategory } from 'src/app/utilities/Product';
 import { ProductsInCart } from 'src/app/utilities/Cart';
 
 @Component({
@@ -16,9 +15,7 @@ import { ProductsInCart } from 'src/app/utilities/Cart';
 })
 export class CartComponent {
   cart$!: Observable<CartState>;
-  test$ = this.store.select(cartSelectors.showProductsInCartByCategory);
-
-  categories = ProductCategory;
+  showProductsByCategories$ = this.store.select(cartSelectors.getAllCategories);
 
   constructor(private store: Store<{ cart: CartState }>) {
     this.cart$ = this.store.select('cart');

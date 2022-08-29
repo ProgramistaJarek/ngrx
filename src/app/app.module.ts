@@ -14,25 +14,13 @@ import { cartReducer } from './states/cart/cart.reducer';
 import { CartEffects } from './states/cart/cart.effects';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
-/* import { ShopComponent } from './features/shop/shop.component';
-import { ProductCardComponent } from './components/product-card/product-card.component';
-import { CartComponent } from './features/cart/cart.component';
-import { MiniCardComponent } from './components/mini-card/mini-card.component';
- */
 
+import { MatIconModule } from '@angular/material/icon';
 import { ShopModule } from './features/shop/shop.module';
 import { NotifyModule } from './utilities/notify/notify.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    /*  ShopComponent,
-    ProductCardComponent,
-    CartComponent,
-    MiniCardComponent,
-    NavbarComponent, */
-  ],
+  declarations: [AppComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -45,6 +33,7 @@ import { NotifyModule } from './utilities/notify/notify.module';
     BrowserAnimationsModule,
     ShopModule,
     NotifyModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
