@@ -22,3 +22,8 @@ export const getAllCategories = createSelector(
     return newSet;
   }
 );
+
+export const selectInCart = createSelector(
+  selectCarts,
+  (state: CartState) => state.inCart
+);

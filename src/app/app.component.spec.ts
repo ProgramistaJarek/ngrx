@@ -1,5 +1,6 @@
-import { TestBed, ComponentFixture, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Component } from '@angular/core';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -8,13 +9,23 @@ describe('AppComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent],
-    });
-    fixture = TestBed.createComponent(AppComponent);
-    component = fixture.componentInstance;
+      declarations: [AppComponent, NavbarStubComponent, ShopStubComponent],
+    }).compileComponents();
   });
 
-  test('should exist', () => {
-    expect(component).toBeDefined();
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should exist', () => {
+    expect(component).toBeTruthy();
   });
 });
+
+@Component({ selector: 'app-navbar', template: '' })
+class NavbarStubComponent {}
+
+@Component({ selector: 'app-shop', template: '' })
+class ShopStubComponent {}
