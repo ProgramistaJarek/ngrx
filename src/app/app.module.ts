@@ -17,7 +17,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { MatIconModule } from '@angular/material/icon';
 import { ShopModule } from './features/shop/shop.module';
-import { NotifyModule } from './utilities/notify/notify.module';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
@@ -32,7 +31,6 @@ import { NotifyModule } from './utilities/notify/notify.module';
     EffectsModule.forRoot([CartEffects]),
     BrowserAnimationsModule,
     ShopModule,
-    NotifyModule,
     MatIconModule,
   ],
   providers: [],

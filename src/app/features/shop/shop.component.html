@@ -3,7 +3,12 @@
   (showProduct)="showProduct($event)"
 ></app-filters>
 
-<ng-template cdkPortal><ng-content></ng-content></ng-template>
+<div
+  *ngIf="notifyService.toastVisible"
+  class="row-start-1 col-start-4 bg-black my-2 rounded text-white flex justify-center items-center"
+>
+  <app-notify [message]="notifyService.message"></app-notify>
+</div>
 
 <div
   *ngIf="products$ | async as product"

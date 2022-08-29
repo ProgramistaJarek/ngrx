@@ -7,5 +7,6 @@ import { NotifyComponent } from './components/notify.component';
 @NgModule({
   declarations: [NotifyComponent],
   imports: [CommonModule, PortalModule],
+  exports: [NotifyComponent],
 })
 export class NotifyModule {}

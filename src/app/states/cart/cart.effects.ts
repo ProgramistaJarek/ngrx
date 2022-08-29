@@ -17,8 +17,7 @@ export class CartEffects {
       this.actions$.pipe(
         ofType(cartActions.addProductDetailsToCart),
         tap(() => {
-          console.log('dodałes produkt do koszyka');
-          this.notifyService.showNotify();
+          this.notifyService.showToast('Produkt został dodany do koszyka');
         })
       ),
     { dispatch: false }
@@ -30,8 +29,12 @@ export class CartEffects {
         ofType(cartActions.updateDetailsAboutProductInCart),
         tap(({ count }) => {
           count == 1
-            ? console.log('zwiekszyles ilosc w koszyku')
-            : console.log('zmniejszyles ilosc w koszyku');
+            ? this.notifyService.showToast(
+                'Zwiększyłeś ilość produktu w koszyku'
+              )
+            : this.notifyService.showToast(
+                'Zmniejszyłeś ilość produktu w koszyku'
+              );
         })
       ),
     { dispatch: false }
@@ -42,7 +45,7 @@ export class CartEffects {
       this.actions$.pipe(
         ofType(cartActions.deleteProductFromCart),
         tap(() => {
-          console.log('Usunales produky z koszyka');
+          this.notifyService.showToast('Usunąłes produkt z koszyka');
         })
       ),
     { dispatch: false }
@@ -53,7 +56,7 @@ export class CartEffects {
       this.actions$.pipe(
         ofType(cartActions.clearCart),
         tap(() => {
-          console.log('Koszyk został opróżniony');
+          this.notifyService.showToast('Koszyk został opróżniony');
         })
       ),
     { dispatch: false }

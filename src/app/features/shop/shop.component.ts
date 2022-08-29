@@ -6,6 +6,8 @@ import * as productSelectors from 'src/app/states/product/product.selectors';
 import { ProductsService } from 'src/app/services/products.service';
 import { productAppState } from 'src/app/states/AppState';
 
+import { NotifyService } from 'src/app/utilities/notify/notify.service';
+
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -17,7 +19,8 @@ export class ShopComponent {
 
   constructor(
     private store: Store<productAppState>,
-    private service: ProductsService
+    private service: ProductsService,
+    public notifyService: NotifyService
   ) {
     this.service.getProducts().subscribe((products) => {
       this.store.dispatch(productActions.retrievedProductsList({ products }));

@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-notify',
   templateUrl: './notify.component.html',
-  styleUrls: ['./notify.component.scss']
+  styleUrls: ['./notify.component.scss'],
 })
-export class NotifyComponent implements OnInit {
+export class NotifyComponent {
+  @Input() message!: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor() {}
 }

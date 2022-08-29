@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { CartState } from 'src/app/states/cart/cart.reducer';
+import { selectInCart } from 'src/app/states/cart/cart.selectors';
 
 @Component({
   selector: 'app-navbar',
@@ -10,9 +11,9 @@ import { CartState } from 'src/app/states/cart/cart.reducer';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  cart$!: Observable<CartState>;
+  cart$!: Observable<number>;
 
   constructor(private store: Store<{ cart: CartState }>) {
-    this.cart$ = this.store.select('cart');
+    this.cart$ = this.store.select(selectInCart);
   }
 }

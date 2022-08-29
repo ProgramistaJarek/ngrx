@@ -8,6 +8,7 @@ import { RatingComponent } from 'src/app/components/rating/rating.component';
 
 import { CartModule } from '../cart/cart.module';
 import { MatIconModule } from '@angular/material/icon';
+import { NotifyModule } from 'src/app/utilities/notify/notify.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,6 @@ import { MatIconModule } from '@angular/material/icon';
     RatingComponent,
   ],
   exports: [ShopComponent],
-  imports: [CommonModule, CartModule, MatIconModule],
+  imports: [CommonModule, CartModule, MatIconModule, NotifyModule],
 })
 export class ShopModule {}
