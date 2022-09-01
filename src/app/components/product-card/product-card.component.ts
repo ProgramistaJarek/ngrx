@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Product } from 'src/app/utilities/Product';
-import * as productActions from 'src/app/states/product/product.actions';
-import * as cartActions from 'src/app/states/cart/cart.actions';
+import * as productActions from '../../states/product/product.actions';
+import * as cartActions from '../../states/cart/cart.actions';
 
 @Component({
   selector: 'app-product-card',

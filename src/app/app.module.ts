@@ -13,13 +13,10 @@ import { productReducer } from './states/product/product.reducer';
 import { cartReducer } from './states/cart/cart.reducer';
 import { CartEffects } from './states/cart/cart.effects';
 
-import { NavbarComponent } from './components/navbar/navbar.component';
-
 import { MatIconModule } from '@angular/material/icon';
-import { ShopModule } from './features/shop/shop.module';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,7 +27,6 @@ import { ShopModule } from './features/shop/shop.module';
     }),
     EffectsModule.forRoot([CartEffects]),
     BrowserAnimationsModule,
-    ShopModule,
     MatIconModule,
   ],
   providers: [],

@@ -3,10 +3,7 @@
   (showProduct)="showProduct($event)"
 ></app-filters>
 
-<div
-  *ngIf="notifyService.toastVisible"
-  class="row-start-1 col-start-4 bg-black my-2 rounded text-white flex justify-center items-center"
->
+<div *ngIf="notifyService.toastVisible" class="row-start-1 col-start-4 my-2">
   <app-notify [message]="notifyService.message"></app-notify>
 </div>
 

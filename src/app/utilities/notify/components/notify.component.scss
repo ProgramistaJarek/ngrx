@@ -1,0 +1,17 @@
+:host {
+  @apply bg-black h-full rounded text-white flex justify-center items-center;
+  animation: fade-in-right 0.3s ease-out both;
+}
+
+@keyframes fade-in-right {
+  0% {
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

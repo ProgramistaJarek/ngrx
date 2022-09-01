@@ -1,29 +1,22 @@
-import { ApplicationRef, Injectable, Injector } from '@angular/core';
-import { Portal, ComponentPortal, DomPortalOutlet } from '@angular/cdk/portal';
-
-import { NotifyComponent } from './components/notify.component';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NotifyService {
-  portal!: Portal<any>;
-  host!: DomPortalOutlet;
-
   message: string = '';
   toastVisible: boolean = false;
-  interval: number = 5000;
 
-  constructor(private appRef: ApplicationRef, private injector: Injector) {}
-
-  showToast(text: string) {
+  constructor() {}
+  timeoutRef: ReturnType<typeof setTimeout> | undefined;
+  showToast(text: string, interval: number) {
     this.message = text;
     this.toastVisible = true;
-    this.interval = 5000;
 
-    setTimeout(() => {
+    clearTimeout(this.timeoutRef);
+    this.timeoutRef = setInterval(() => {
       this.message = '';
       this.toastVisible = false;
-    }, 5000);
+    }, interval);
   }
 }
