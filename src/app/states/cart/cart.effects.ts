@@ -69,6 +69,20 @@ export class CartEffects {
         ofType(cartActions.clearCart),
         tap(() => {
           this.notifyService.showToast(
+            'Koszyk został wyczyszczony',
+            this.delay
+          );
+        })
+      ),
+    { dispatch: false }
+  );
+
+  orderComplete$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(cartActions.orderCompleteClearCart),
+        tap(() => {
+          this.notifyService.showToast(
             'Zamówienie zostało złożone',
             this.delay
           );

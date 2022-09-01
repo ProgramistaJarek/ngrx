@@ -21,11 +21,7 @@ export class ShopComponent {
     private store: Store<productAppState>,
     private service: ProductsService,
     public notifyService: NotifyService
-  ) {
-    this.service.getProducts().subscribe((products) => {
-      this.store.dispatch(productActions.retrievedProductsList({ products }));
-    });
-  }
+  ) {}
 
   showProduct(key: string) {
     if (this.filters.includes(key)) {

@@ -17,3 +17,7 @@ export const deleteProductFromCart = createAction(
   '[Cart Component] Delete Product From Cart ',
   props<{ productId: number }>()
 );
+
+export const orderCompleteClearCart = createAction(
+  '[Cart Component] Order Complete Clear Cart'
+);

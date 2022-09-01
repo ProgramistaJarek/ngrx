@@ -52,6 +52,7 @@ export const cartReducer = createReducer(
       };
     }
   ),
+
   on(
     cartActions.updateDetailsAboutProductInCart,
     (state: CartState, { productId, count, toPay }) => {
@@ -74,14 +75,20 @@ export const cartReducer = createReducer(
       };
     }
   ),
-  on(cartActions.clearCart, (state: CartState) => {
-    return {
-      products: [],
-      productsInCart: [],
-      inCart: 0,
-      toPay: 0,
-    };
-  }),
+
+  on(
+    cartActions.clearCart,
+    cartActions.orderCompleteClearCart,
+    (state: CartState) => {
+      return {
+        products: [],
+        productsInCart: [],
+        inCart: 0,
+        toPay: 0,
+      };
+    }
+  ),
+
   on(cartActions.deleteProductFromCart, (state: CartState, { productId }) => {
     const inCartDelete = state.productsInCart.filter(
       (key) => key.id === productId
