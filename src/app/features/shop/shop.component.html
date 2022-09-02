@@ -3,13 +3,16 @@
   (showProduct)="showProduct($event)"
 ></app-filters>
 
-<div *ngIf="notifyService.toastVisible" class="row-start-1 col-start-4 my-2">
+<div
+  *ngIf="notifyService.toastVisible"
+  class="row-start-2 my-2 md:row-start-1 md:col-start-3 md:col-span-2 lg:col-start-4 lg:col-span-1"
+>
   <app-notify [message]="notifyService.message"></app-notify>
 </div>
 
 <div
   *ngIf="products$ | async as product"
-  class="flex flex-wrap row-start-2 col-start-1 col-span-3"
+  class="flex justify-center flex-wrap row-start-4 md:justify-start md:row-start-2 md:row-span-1 md:col-span-3"
 >
   <app-product-card
     *ngFor="let item of product"
@@ -17,4 +20,6 @@
   ></app-product-card>
 </div>
 
-<app-cart class="row-start-2 row-span-2 col-start-4"></app-cart>
+<app-cart
+  class="row-start-3 md:row-start-2 md:row-span-2 md:col-start-4"
+></app-cart>
