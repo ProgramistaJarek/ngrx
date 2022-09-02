@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as productActions from 'src/app/states/product/product.actions';
 import * as productSelectors from 'src/app/states/product/product.selectors';
-import { ProductsService } from 'src/app/services/products.service';
 import { productAppState } from 'src/app/states/AppState';
 
 import { NotifyService } from 'src/app/utilities/notify/notify.service';
@@ -19,7 +17,6 @@ export class ShopComponent {
 
   constructor(
     private store: Store<productAppState>,
-    private service: ProductsService,
     public notifyService: NotifyService
   ) {}
 

@@ -6,7 +6,7 @@ export interface ProductState {
   products: Product[];
 }
 
-const productInitialState: ProductState = {
+export const productInitialState: ProductState = {
   products: [
     {
       id: 1,
