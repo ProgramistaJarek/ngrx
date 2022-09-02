@@ -1,5 +1,5 @@
 :host {
-  @apply bg-black h-full rounded text-white flex justify-center items-center;
+  @apply bg-gray-500 h-full rounded text-white flex justify-center items-center py-4 md:py-0 md:bg-black;
   animation: fade-in-right 0.3s ease-out both;
 }
 

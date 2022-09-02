@@ -5,7 +5,7 @@
 
 <div
   *ngIf="notifyService.toastVisible"
-  class="row-start-2 my-2 md:row-start-1 md:col-start-3 md:col-span-2 lg:col-start-4 lg:col-span-1"
+  class="sticky top-4 md:mb-4 md:row-start-1 md:col-start-3 md:col-span-2 md:relative lg:col-start-4 lg:col-span-1"
 >
   <app-notify [message]="notifyService.message"></app-notify>
 </div>
