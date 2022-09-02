@@ -22,6 +22,7 @@
           (click)="onMinus()"
           [ngClass]="count <= 1 ? '' : 'hover:text-orange-500'"
           [disabled]="count <= 1"
+          data-testid="minus-button"
         >
           <mat-icon>remove</mat-icon>
         </button>
@@ -31,6 +32,7 @@
           [ngClass]="count >= item.inStock ? '' : 'hover:text-orange-500'"
           (click)="onPlus()"
           [disabled]="count >= item.inStock"
+          data-testid="plus-button"
         >
           <mat-icon>add</mat-icon>
         </button>
@@ -41,6 +43,7 @@
         [ngClass]="count <= 0 ? '' : 'hover:text-orange-500'"
         [disabled]="count <= 0"
         class="flex"
+        data-testid="add-button"
       >
         <mat-icon>add_shopping_cart</mat-icon>
       </button>
