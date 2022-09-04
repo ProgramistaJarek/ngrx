@@ -3,7 +3,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { MiniCardComponent } from './mini-card.component';
 import * as cartActions from '../../states/cart/cart.actions';
-import { Product, ProductCategory } from 'src/app/utilities/Product';
+import { ProductCategory } from 'src/app/utilities/Product';
 import { chengeProductInStock } from 'src/app/states/product/product.actions';
 
 describe('MiniCardComponent', () => {
@@ -39,14 +39,14 @@ describe('MiniCardComponent', () => {
 
   describe('methods', () => {
     it('change in stock by one method', () => {
-      //THEN
+      //GIVEN
       const plusNumber = 1;
       const dispatchSpy = jest.spyOn(store, 'dispatch');
 
       //WHEN
       component.changeInStockByOne(plusNumber);
 
-      //GIVE
+      //THEN
       expect(dispatchSpy).toHaveBeenCalledWith(
         cartActions.updateDetailsAboutProductInCart({
           productId: 1,
@@ -60,14 +60,14 @@ describe('MiniCardComponent', () => {
     });
 
     it('on delete method', () => {
-      //THEN
+      //GIVEN
       const negativeNumber = -1;
       const dispatchSpy = jest.spyOn(store, 'dispatch');
 
       //WHEN
       component.onDelete(negativeNumber);
 
-      //GIVE
+      //THEN
       expect(dispatchSpy).toHaveBeenCalledWith(
         cartActions.deleteProductFromCart({
           productId: 1,
