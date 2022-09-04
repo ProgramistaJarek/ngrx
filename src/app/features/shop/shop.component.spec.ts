@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { provideMock } from '@testing-library/angular/jest-utils';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { of } from 'rxjs';
 
@@ -60,20 +59,20 @@ describe('ShopComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  /* describe('filters', () => {
+  describe('filters', () => {
     it('should filter only luz', () => {
       //GIVEN
       component.products$ = of(products);
       component.filters = [ProductCategory.LUZ];
+      const selectSpy = jest.spyOn(store, 'select');
 
       //WHEN
       fixture.detectChanges();
-      store.overrideSelector(productSelectors.selectAllProducts, products);
       component.showProduct(ProductCategory.LUZ);
-      console.log(component.showProduct(ProductCategory.LUZ));
+      console.log('tutaj', component.products$.subscribe(console.log));
 
       //THEN
-      expect(1).toBeTruthy();
+      expect(2).toBe(2);
     });
-  }); */
+  });
 });
